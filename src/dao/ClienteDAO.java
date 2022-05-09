@@ -1,37 +1,60 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
+import java.io.IOException;
+
+import logicadenegocios.Cliente;
+import validaciones.Validaciones;
 import conexion.Conexion;
 
-import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 
-/**
- *
- * @author chava
- */
+
+
 public class ClienteDAO {
-    
-  Conexion conexion;
+	Conexion conexion;
 	
 	public ClienteDAO() {
-		
-	  conexion = new Conexion();
-	  
-	}
-	 public String registrarCliente(String primerApellido, String segundoApellido, String nombre,
+	    conexion = new Conexion();
+	  }
+
+    public DefaultComboBoxModel llenarComboBox() {
+    DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+    try {
+      CallableStatement cmd = conexion.Conexion().prepareCall("{CALL [dbo].[[Combo_IdentificacionClientes]]}");
+      ResultSet resultado = cmd.executeQuery();    
+      while (resultado.next()) {
+        modelo.addElement(resultado.getString(1));
+      }
+    } catch (SQLException e) {
+    }
+      return modelo;
+  }
+	 public void registrarCliente(String primerApellido, String segundoApellido, String nombre,
 			 String identificacion, String fechaNacimiento, String numeroTelefonico,String correoElectronico) throws IOException {
-		 
-		 	String resultado = null;
+		 	PreparedStatement ps;
+	    	Connection conect = conexion.Conexion();    
+
+		 	//String resultado = "insert into Cliente values (?,?,?,?,?,?,?)";
 		   
 		    	try {
-		    	 Connection conect = conexion.Conexion();    
+		    		CallableStatement cstmt2 = conect.prepareCall("{call dbo.registrarPersona(?,?,?,?,?,?,?)}");
+			         cstmt2.setString(1, primerApellido);
+			         cstmt2.setString(2, segundoApellido);
+			         cstmt2.setString(3, nombre);
+			         cstmt2.setString(4, identificacion);
+			         cstmt2.setString(5, fechaNacimiento);
+			         cstmt2.setString(6, numeroTelefonico);
+			         cstmt2.setString(7, correoElectronico);
+			         cstmt2.executeUpdate();
+		    	// Connection conect = conexion.Conexion();    
 		         CallableStatement cstmt = conect.prepareCall("{call dbo.registrarCliente(?,?,?,?,?,?,?)}");
 		         cstmt.setString(1, primerApellido);
 		         cstmt.setString(2, segundoApellido);
@@ -40,22 +63,56 @@ public class ClienteDAO {
 		         cstmt.setString(5, fechaNacimiento);
 		         cstmt.setString(6, numeroTelefonico);
 		         cstmt.setString(7, correoElectronico);
-		         int respuesta = cstmt.executeUpdate();
+		         cstmt.executeUpdate();
 		         
-		         if (respuesta > 0 ) {
-		        	
-		           resultado = "Registro exitoso";
-		         }
-		       } catch (SQLException e) {
-		    	   resultado = ("Error: Revise que los datos que esta ingresando coincidan con los formatos pedidos"
-			    	  		+ " y vuelva a intentarlo.");
-		       }
-		      
-		     return resultado;
-		  }    
+		         //int respuesta = cstmt.executeUpdate();
+		    	 /*ps = conect.prepareStatement(resultado);
+		            ps.setString(1,primerApellido);
+		            ps.setString(2,segundoApellido);
+		            ps.setString(3,nombre);
+		            ps.setString(4,identificacion);
+		            ps.setString(5,fechaNacimiento);
+		            ps.setString(6,numeroTelefonico);
+		            ps.setString(7,correoElectronico);
+		            ps.executeUpdate();
+		            ps.close();*/
+		         
+		    	} catch (SQLException e) {
+		            System.err.println(e);
+		            //return false;
+		        }
+		        finally{
+		            try{
+		                conect.close();
+		            } catch(SQLException e){
+		                System.err.println(e);
+		            }
+		        }
+		  }
+  public ResultSet consultarClientesOrdenados() {
+    Statement ejecutor;
+    ResultSet rs = null;
+    try {
+      Connection con = conexion.Conexion();
+      ejecutor = con.createStatement();
+      rs = ejecutor.executeQuery("execute dbo.ordenarClientesAscendentemente");
+    } catch (SQLException e) {
+    }  
+    return rs;
+  }
+  
+  public ResultSet consultarInformacionClienteParticular(String pCliente) {
+    Statement ejecutor;
+    ResultSet rs = null;
+    try {
+      Connection con = conexion.Conexion();
+      ejecutor = con.createStatement();
+      rs = ejecutor.executeQuery("execute dbo.consultarInformacionClienteParticular '" 
+          + pCliente +"'");
+    } catch (SQLException ex) {
+      Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
 
-    public void consultarClientesOrdenados() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    }  
+    return rs;
+  }
 }

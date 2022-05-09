@@ -17,9 +17,9 @@ import java.util.logging.Logger;
 public class Conexion {
     
   //Conexion BD Jafet
-  String connectionURL = "jdbc:sqlserver://localhost\\SQLEXPRESS01:1434;databaseName=SistemaBancario;user=usuario;password=1234;";
+  //String connectionURL = "jdbc:sqlserver://localhost\\SQLEXPRESS01:1434;databaseName=SistemaBancario;user=usuario;password=1234;";
   //Conexion BD Daniel
-  //String connectionURL = "jdbc:sqlserver://DESKTOP-N2DB42H\\ADMIN:1433;databaseName=SistemaBancario;user=admin;password=123;";
+  String connectionURL = "jdbc:sqlserver://DESKTOP-N2DB42H\\ADMIN:1433;databaseName=SistemaBancario;user=admin;password=123;";
   Connection con = null;
   
   /**

@@ -1,21 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
 
 /**
- *
- * @author USUARIO
+ * Vista del menu principal de opciones
+ * @author Daniel Vaglio Fallas y Jafet Chavarria Moreno
+ * @version Proyecto Programado I
  */
 public class MenuOpciones extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MenuOpciones
-     */
     public MenuOpciones() {
         initComponents();
+      
+        
     }
 
     /**
@@ -26,21 +21,169 @@ public class MenuOpciones extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelMenu = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
+        btnRegistrarCliente = new javax.swing.JButton();
+        btnRegistrarCurso = new javax.swing.JButton();
+        btnRegistrarPlanEstudios = new javax.swing.JButton();
+        btnAsignarCursoRequisito = new javax.swing.JButton();
+        btnModificacionInformacion = new javax.swing.JButton();
+        btnConsultasAdicionales = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        panelMenu.setBackground(new java.awt.Color(0, 102, 204));
+
+        lblTitulo.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 36)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("Seleccione una Opción ");
+
+        btnRegistrarCliente.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
+        btnRegistrarCliente.setText("Registrar un cliente");
+        btnRegistrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarClienteActionPerformed(evt);
+            }
+        });
+
+        btnRegistrarCurso.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
+        btnRegistrarCurso.setText("Registrar una cuenta");
+        btnRegistrarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarCursoActionPerformed(evt);
+            }
+        });
+
+        btnRegistrarPlanEstudios.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
+        btnRegistrarPlanEstudios.setText("Crear un Plan de Estudios");
+        btnRegistrarPlanEstudios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarPlanEstudiosActionPerformed(evt);
+            }
+        });
+
+        btnAsignarCursoRequisito.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
+        btnAsignarCursoRequisito.setText("Asignar Requisitos y Correquisitos a un Curso");
+        btnAsignarCursoRequisito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAsignarCursoRequisitoActionPerformed(evt);
+            }
+        });
+
+        btnModificacionInformacion.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
+        btnModificacionInformacion.setText("Modificaciones a la Información");
+        btnModificacionInformacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificacionInformacionActionPerformed(evt);
+            }
+        });
+
+        btnConsultasAdicionales.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
+        btnConsultasAdicionales.setText("Consultas Adicionales");
+        btnConsultasAdicionales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultasAdicionalesActionPerformed(evt);
+            }
+        });
+
+        btnSalir.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 10)); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
+        panelMenu.setLayout(panelMenuLayout);
+        panelMenuLayout.setHorizontalGroup(
+            panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMenuLayout.createSequentialGroup()
+                        .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnModificacionInformacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRegistrarCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRegistrarPlanEstudios, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 95, Short.MAX_VALUE)
+                        .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnAsignarCursoRequisito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRegistrarCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnConsultasAdicionales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(48, 48, 48))
+                    .addGroup(panelMenuLayout.createSequentialGroup()
+                        .addComponent(btnSalir)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(panelMenuLayout.createSequentialGroup()
+                .addGap(176, 176, 176)
+                .addComponent(lblTitulo)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        panelMenuLayout.setVerticalGroup(
+            panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(lblTitulo)
+                .addGap(18, 18, 18)
+                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegistrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrarPlanEstudios, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAsignarCursoRequisito, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnModificacionInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultasAdicionales, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(panelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(panelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRegistrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarClienteActionPerformed
+       
+    }//GEN-LAST:event_btnRegistrarClienteActionPerformed
+
+    private void btnRegistrarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarCursoActionPerformed
+ 
+    }//GEN-LAST:event_btnRegistrarCursoActionPerformed
+
+    private void btnRegistrarPlanEstudiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPlanEstudiosActionPerformed
+
+    }//GEN-LAST:event_btnRegistrarPlanEstudiosActionPerformed
+
+    private void btnAsignarCursoRequisitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarCursoRequisitoActionPerformed
+
+    }//GEN-LAST:event_btnAsignarCursoRequisitoActionPerformed
+
+    private void btnModificacionInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificacionInformacionActionPerformed
+
+    }//GEN-LAST:event_btnModificacionInformacionActionPerformed
+
+    private void btnConsultasAdicionalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultasAdicionalesActionPerformed
+
+    }//GEN-LAST:event_btnConsultasAdicionalesActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+       
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -68,6 +211,7 @@ public class MenuOpciones extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MenuOpciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -78,5 +222,14 @@ public class MenuOpciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnAsignarCursoRequisito;
+    public javax.swing.JButton btnConsultasAdicionales;
+    public javax.swing.JButton btnModificacionInformacion;
+    public javax.swing.JButton btnRegistrarCliente;
+    public javax.swing.JButton btnRegistrarCurso;
+    public javax.swing.JButton btnRegistrarPlanEstudios;
+    public javax.swing.JButton btnSalir;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JPanel panelMenu;
     // End of variables declaration//GEN-END:variables
 }
