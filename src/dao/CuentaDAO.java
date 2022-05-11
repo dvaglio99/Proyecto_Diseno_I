@@ -66,7 +66,35 @@ public class CuentaDAO {
     return rs;
   }
   
-  public boolean cambiarPIN(String pPIN, String pNumeroCuenta) {
-      return false;
+  public ResultSet buscarPIN(int pNumeroCuenta) {
+    Statement ejecutor;
+    ResultSet rs = null;
+    
+    try {
+      Connection con = conexion.Conexion();
+      ejecutor = con.createStatement();
+      rs = ejecutor.executeQuery("execute dbo.buscarPIN '" 
+          + pNumeroCuenta +"'");
+    } catch (SQLException e) {
+      Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
+    }
+    return rs;
+  }
+  
+  public boolean cambiarPIN(String pPIN, int pNumeroCuenta) {
+    boolean resultado = false;
+    ResultSet rs = null;
+    try {
+      Connection con = conexion.Conexion();
+      String query = "dbo.CambiarPIN @PIN = ?, @Numero_Cuenta = ?";
+      CallableStatement consulta = con.prepareCall(query);
+      consulta.setString(1, pPIN);
+      consulta.setInt(2, pNumeroCuenta);
+      consulta.execute();
+      resultado = true;
+    } catch (SQLException e) {
+      Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
+    }
+    return resultado;
   }
 }

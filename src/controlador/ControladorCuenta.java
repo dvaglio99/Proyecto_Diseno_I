@@ -9,6 +9,7 @@ import conexion.Conexion;
 import dao.CuentaDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -26,6 +27,7 @@ import vista.ConsultarInformacionCuentas;
 public class ControladorCuenta implements ActionListener {
   Conexion conexion;
   public ResultSet rs;
+  public PreparedStatement ps;
   public JTable tabla;
   public ConsultarCuentasOrdenadas vistaConsultarCuentasOrdenadas = new ConsultarCuentasOrdenadas();
   public ConsultarInformacionCuentas vistaConsultarInformacionCuentas = 
@@ -55,8 +57,10 @@ public class ControladorCuenta implements ActionListener {
     vistaCambiarPIN = pVistaCambiarPIN;
     cuentaDao = pModelo;
 
+    this.vistaCambiarPIN.btnBuscarPIN.addActionListener(this);
     this.vistaCambiarPIN.btnCambiarPIN.addActionListener(this);
     this.vistaCambiarPIN.btnVolver.addActionListener(this);
+    this.vistaCambiarPIN.txtPINNoModificable.setEditable(false);
   }
   
   @Override
@@ -69,6 +73,12 @@ public class ControladorCuenta implements ActionListener {
     }
     if (e.getSource() == vistaConsultarCuentasOrdenadas.btnVolver) {
         this.vistaConsultarCuentasOrdenadas.setVisible(false);
+    }
+    if (e.getSource() == vistaCambiarPIN.btnBuscarPIN) {
+        buscarPIN();
+    }
+    if (e.getSource() == vistaCambiarPIN.btnCambiarPIN) {
+        cambiarPIN();
     }
     if (e.getSource() == vistaCambiarPIN.btnVolver) {
         this.vistaCambiarPIN.setVisible(false);
@@ -96,4 +106,38 @@ public class ControladorCuenta implements ActionListener {
       JOptionPane.showMessageDialog(null,ex); 
     }
   }    
+   
+  public void buscarPIN() {
+    int numeroCuenta = Integer.parseInt(vistaCambiarPIN.cbxCuentas.getSelectedItem().toString());
+    rs = cuentaDao.buscarPIN(numeroCuenta);
+    try {
+      if (rs.next()) {
+        vistaCambiarPIN.txtPINNoModificable.setText(rs.getString(1));
+      }
+    } catch (SQLException ex) {
+      JOptionPane.showMessageDialog(null,ex); 
+    }
+  }
+  
+  public void cambiarPIN() {
+  int numeroCuenta = Integer.parseInt(vistaCambiarPIN.cbxCuentas.getSelectedItem().toString());  
+  String PINNoModificable = vistaCambiarPIN.txtPINNoModificable.getText().toString();
+  String PIN = vistaCambiarPIN.txtPIN.getText().toString();
+  String nuevoPIN = vistaCambiarPIN.txtNuevoPIN.getText().toString();
+  String nuevoNuevoPIN = vistaCambiarPIN.txtNuevoNuevoPIN.getText().toString();
+  if (PINNoModificable.equals(PIN) && nuevoPIN.equals(nuevoNuevoPIN) && 
+      validaciones.Validaciones.validarPIN(nuevoPIN)) {
+    try {
+      cuentaDao.cambiarPIN(nuevoPIN, numeroCuenta);
+      JOptionPane.showMessageDialog(vistaCambiarPIN, "Ha sido posible cambiar el "
+            + "PIN de la cuenta numero:  " + numeroCuenta);      
+    } catch (Exception e) {
+      }
+    } else {
+      JOptionPane.showMessageDialog(vistaCambiarPIN, "ERROR: fallo en el ingreso de datos.  "
+            + " No ha sido posible cambiar PIN de la cuenta numero:  " + 
+              numeroCuenta + ". Por favor intente de nuevo."); 
+      }
+
+  }
 }

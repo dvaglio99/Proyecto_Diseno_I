@@ -37,6 +37,9 @@ public class CambiarPIN extends javax.swing.JFrame {
         txtPIN = new javax.swing.JPasswordField();
         txtNuevoPIN = new javax.swing.JPasswordField();
         txtNuevoNuevoPIN = new javax.swing.JPasswordField();
+        lblNombreEscuela4 = new javax.swing.JLabel();
+        txtPINNoModificable = new javax.swing.JPasswordField();
+        btnBuscarPIN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +88,18 @@ public class CambiarPIN extends javax.swing.JFrame {
         lblNombreEscuela3.setForeground(new java.awt.Color(255, 255, 255));
         lblNombreEscuela3.setText("Ingrese nuevamente el nuevo PIN de la cuenta:");
 
+        lblNombreEscuela4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
+        lblNombreEscuela4.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombreEscuela4.setText("PIN de la cuenta:");
+
+        btnBuscarPIN.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
+        btnBuscarPIN.setText("Buscar PIN");
+        btnBuscarPIN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPINActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelConsultaLayout = new javax.swing.GroupLayout(panelConsulta);
         panelConsulta.setLayout(panelConsultaLayout);
         panelConsultaLayout.setHorizontalGroup(
@@ -97,21 +112,26 @@ public class CambiarPIN extends javax.swing.JFrame {
                         .addGap(181, 181, 181)
                         .addComponent(lblTitulo))
                     .addGroup(panelConsultaLayout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNombreEscuela)
-                            .addComponent(lblNombreEscuela1)
-                            .addComponent(lblNombreEscuela2)
-                            .addComponent(lblNombreEscuela3))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbxCuentas, 0, 352, Short.MAX_VALUE)
-                            .addComponent(txtPIN)
-                            .addComponent(txtNuevoPIN)
-                            .addComponent(txtNuevoNuevoPIN)))
-                    .addGroup(panelConsultaLayout.createSequentialGroup()
                         .addGap(320, 320, 320)
-                        .addComponent(btnCambiarPIN)))
+                        .addComponent(btnCambiarPIN))
+                    .addGroup(panelConsultaLayout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnBuscarPIN)
+                            .addGroup(panelConsultaLayout.createSequentialGroup()
+                                .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNombreEscuela)
+                                    .addComponent(lblNombreEscuela1)
+                                    .addComponent(lblNombreEscuela2)
+                                    .addComponent(lblNombreEscuela3)
+                                    .addComponent(lblNombreEscuela4))
+                                .addGap(18, 18, 18)
+                                .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cbxCuentas, 0, 352, Short.MAX_VALUE)
+                                    .addComponent(txtPIN)
+                                    .addComponent(txtNuevoPIN)
+                                    .addComponent(txtNuevoNuevoPIN)
+                                    .addComponent(txtPINNoModificable))))))
                 .addContainerGap(168, Short.MAX_VALUE))
         );
         panelConsultaLayout.setVerticalGroup(
@@ -125,11 +145,17 @@ public class CambiarPIN extends javax.swing.JFrame {
                 .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombreEscuela, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBuscarPIN)
+                .addGap(8, 8, 8)
+                .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNombreEscuela4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPINNoModificable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombreEscuela2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(22, 22, 22)
                 .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombreEscuela1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNuevoPIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -137,7 +163,7 @@ public class CambiarPIN extends javax.swing.JFrame {
                 .addGroup(panelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombreEscuela3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNuevoNuevoPIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(btnCambiarPIN)
                 .addGap(113, 113, 113))
         );
@@ -167,6 +193,10 @@ public class CambiarPIN extends javax.swing.JFrame {
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
 
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnBuscarPINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPINActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarPINActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,6 +241,7 @@ public class CambiarPIN extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnBuscarPIN;
     public javax.swing.JButton btnCambiarPIN;
     public javax.swing.JButton btnVolver;
     public javax.swing.JComboBox<String> cbxCuentas;
@@ -218,10 +249,12 @@ public class CambiarPIN extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombreEscuela1;
     private javax.swing.JLabel lblNombreEscuela2;
     private javax.swing.JLabel lblNombreEscuela3;
+    private javax.swing.JLabel lblNombreEscuela4;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel panelConsulta;
-    private javax.swing.JPasswordField txtNuevoNuevoPIN;
-    private javax.swing.JPasswordField txtNuevoPIN;
-    private javax.swing.JPasswordField txtPIN;
+    public javax.swing.JPasswordField txtNuevoNuevoPIN;
+    public javax.swing.JPasswordField txtNuevoPIN;
+    public javax.swing.JPasswordField txtPIN;
+    public javax.swing.JPasswordField txtPINNoModificable;
     // End of variables declaration//GEN-END:variables
 }
