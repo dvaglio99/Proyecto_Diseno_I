@@ -25,7 +25,7 @@ public class MenuOpciones extends javax.swing.JFrame {
         lblTitulo = new javax.swing.JLabel();
         btnRegistrarCliente = new javax.swing.JButton();
         btnRegistrarCurso = new javax.swing.JButton();
-        btnRegistrarPlanEstudios = new javax.swing.JButton();
+        btnCambiarPIN = new javax.swing.JButton();
         btnAsignarCursoRequisito = new javax.swing.JButton();
         btnModificacionInformacion = new javax.swing.JButton();
         btnConsultasAdicionales = new javax.swing.JButton();
@@ -55,11 +55,11 @@ public class MenuOpciones extends javax.swing.JFrame {
             }
         });
 
-        btnRegistrarPlanEstudios.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
-        btnRegistrarPlanEstudios.setText("Crear un Plan de Estudios");
-        btnRegistrarPlanEstudios.addActionListener(new java.awt.event.ActionListener() {
+        btnCambiarPIN.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
+        btnCambiarPIN.setText("Cambiar PIN de una cuenta");
+        btnCambiarPIN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarPlanEstudiosActionPerformed(evt);
+                btnCambiarPINActionPerformed(evt);
             }
         });
 
@@ -106,7 +106,7 @@ public class MenuOpciones extends javax.swing.JFrame {
                         .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btnModificacionInformacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnRegistrarCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnRegistrarPlanEstudios, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnCambiarPIN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 95, Short.MAX_VALUE)
                         .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnAsignarCursoRequisito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -134,7 +134,7 @@ public class MenuOpciones extends javax.swing.JFrame {
                     .addComponent(btnRegistrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrarPlanEstudios, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCambiarPIN, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAsignarCursoRequisito, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -165,9 +165,9 @@ public class MenuOpciones extends javax.swing.JFrame {
  
     }//GEN-LAST:event_btnRegistrarCursoActionPerformed
 
-    private void btnRegistrarPlanEstudiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPlanEstudiosActionPerformed
+    private void btnCambiarPINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarPINActionPerformed
 
-    }//GEN-LAST:event_btnRegistrarPlanEstudiosActionPerformed
+    }//GEN-LAST:event_btnCambiarPINActionPerformed
 
     private void btnAsignarCursoRequisitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarCursoRequisitoActionPerformed
 
@@ -223,11 +223,11 @@ public class MenuOpciones extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAsignarCursoRequisito;
+    public javax.swing.JButton btnCambiarPIN;
     public javax.swing.JButton btnConsultasAdicionales;
     public javax.swing.JButton btnModificacionInformacion;
     public javax.swing.JButton btnRegistrarCliente;
     public javax.swing.JButton btnRegistrarCurso;
-    public javax.swing.JButton btnRegistrarPlanEstudios;
     public javax.swing.JButton btnSalir;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel panelMenu;

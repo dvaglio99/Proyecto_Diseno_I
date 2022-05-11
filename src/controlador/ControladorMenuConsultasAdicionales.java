@@ -1,6 +1,7 @@
 package controlador;
 
 import dao.ClienteDAO;
+import dao.CuentaDAO;
 import vista.MenuConsultasAdicionales;
 import vista.ConsultarClientesOrdenados;
 import vista.ConsultarInformacionClienteCuentas;
@@ -12,6 +13,8 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import vista.ConsultarCuentasOrdenadas;
+import vista.ConsultarInformacionCuentas;
 
 
 /**
@@ -32,8 +35,8 @@ public class ControladorMenuConsultasAdicionales implements ActionListener {
 
     this.vistaConsultasAdicionales.btnConsultarClientesOrdenados.addActionListener(this);
     this.vistaConsultasAdicionales.btnConsultarInformacionCliente.addActionListener(this);
-    this.vistaConsultasAdicionales.btnConsultarPlanDeEstudioCursoParticular.addActionListener(this);
-    this.vistaConsultasAdicionales.btnConsultarCorrequisitoCurso.addActionListener(this);
+    this.vistaConsultasAdicionales.btnConsultarCuentasOrdenadas.addActionListener(this);
+    this.vistaConsultasAdicionales.btnConsultarInformacionCuentaParticular.addActionListener(this);
     this.vistaConsultasAdicionales.btnConsultarListaDeCursos.addActionListener(this); 
     this.vistaConsultasAdicionales.btnVolver.addActionListener(this);
   }
@@ -50,9 +53,15 @@ public class ControladorMenuConsultasAdicionales implements ActionListener {
     if (e.getSource() == vistaConsultasAdicionales.btnConsultarInformacionCliente) {
       consultarInformacionClienteParticular();
     }
-    /*if (e.getSource() == vistaConsultasAdicionales.btnVolver) {
+    if (e.getSource() == vistaConsultasAdicionales.btnConsultarCuentasOrdenadas) {
+      consultarCuentasOrdenadas();
+    }
+    if (e.getSource() == vistaConsultasAdicionales.btnConsultarInformacionCuentaParticular) {
+      consultarInformacionCuentaParticular();
+    }
+    if (e.getSource() == vistaConsultasAdicionales.btnVolver) {
       this.vistaConsultasAdicionales.setVisible(false);
-    } */
+    } 
   }
  
   public void consultarClientesOrdenados() {
@@ -83,5 +92,36 @@ public class ControladorMenuConsultasAdicionales implements ActionListener {
     ClienteDAO clienteDao = new ClienteDAO();
     ControladorCliente controlador = new ControladorCliente(consulta, clienteDao);
     controlador.vistaConsultarInformacionClienteCuentas.setVisible(true);
+  }
+  
+  public void consultarCuentasOrdenadas() {
+    ConsultarCuentasOrdenadas consulta = new ConsultarCuentasOrdenadas();
+    CuentaDAO cuentaDao = new CuentaDAO();
+    ControladorCuenta controlador = new ControladorCuenta(consulta,cuentaDao);
+    controlador.vistaConsultarCuentasOrdenadas.setVisible(true);
+    ResultSet rs;
+    JTable tabla;
+    DefaultTableModel dfm = new DefaultTableModel();
+    rs = cuentaDao.consultarCuentasOrdenadas();
+    tabla = consulta.tablaCuentasOrdenadas;
+    tabla.setModel(dfm);
+    dfm.setColumnIdentifiers(new Object[]{"Numero Cuenta", "Estado","Saldo","Identificacion",
+        "Primer Apellido", "Segundo Apellido","Nombre"});
+    try {
+      while (rs.next()) {
+        dfm.addRow(new Object[] {rs.getString("Numero_Cuenta"),rs.getString("Estado"),rs.getDouble("Saldo"),
+            rs.getInt("Identificacion"),rs.getString("PrimerApellido"), rs.getString("SegundoApellido"),
+            rs.getString("Nombre")});
+      }    
+    } catch (SQLException ex) {
+      JOptionPane.showMessageDialog(null,ex); 
+    }
+  }
+  
+  public void consultarInformacionCuentaParticular(){
+    ConsultarInformacionCuentas consulta = new ConsultarInformacionCuentas();
+    CuentaDAO cuentaDao = new CuentaDAO();
+    ControladorCuenta controlador = new ControladorCuenta(consulta, cuentaDao);
+    controlador.vistaConsultarInformacionCuentas.setVisible(true);
   }
 }

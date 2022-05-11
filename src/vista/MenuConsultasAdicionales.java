@@ -23,9 +23,9 @@ public class MenuConsultasAdicionales extends javax.swing.JFrame {
         btnVolver = new javax.swing.JButton();
         lblTitulo = new javax.swing.JLabel();
         btnConsultarClientesOrdenados = new javax.swing.JButton();
-        btnConsultarPlanDeEstudioCursoParticular = new javax.swing.JButton();
+        btnConsultarCuentasOrdenadas = new javax.swing.JButton();
         btnConsultarInformacionCliente = new javax.swing.JButton();
-        btnConsultarCorrequisitoCurso = new javax.swing.JButton();
+        btnConsultarInformacionCuentaParticular = new javax.swing.JButton();
         btnConsultarListaDeCursos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -45,18 +45,18 @@ public class MenuConsultasAdicionales extends javax.swing.JFrame {
         lblTitulo.setText("Consultas adicionales");
 
         btnConsultarClientesOrdenados.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
-        btnConsultarClientesOrdenados.setText("Consultar clientes ordenados");
+        btnConsultarClientesOrdenados.setText("Consultar clientes ordenados ascedentenmente");
         btnConsultarClientesOrdenados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarClientesOrdenadosActionPerformed(evt);
             }
         });
 
-        btnConsultarPlanDeEstudioCursoParticular.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
-        btnConsultarPlanDeEstudioCursoParticular.setText("Consultar planes de estudio de un curso ");
-        btnConsultarPlanDeEstudioCursoParticular.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultarCuentasOrdenadas.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
+        btnConsultarCuentasOrdenadas.setText("Consultar cuentas ordenados descendentemente");
+        btnConsultarCuentasOrdenadas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarPlanDeEstudioCursoParticularActionPerformed(evt);
+                btnConsultarCuentasOrdenadasActionPerformed(evt);
             }
         });
 
@@ -68,11 +68,11 @@ public class MenuConsultasAdicionales extends javax.swing.JFrame {
             }
         });
 
-        btnConsultarCorrequisitoCurso.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
-        btnConsultarCorrequisitoCurso.setText("Consultar correquisitos de un curso");
-        btnConsultarCorrequisitoCurso.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultarInformacionCuentaParticular.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
+        btnConsultarInformacionCuentaParticular.setText("Consultar Informacion de una cuenta en particular");
+        btnConsultarInformacionCuentaParticular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarCorrequisitoCursoActionPerformed(evt);
+                btnConsultarInformacionCuentaParticularActionPerformed(evt);
             }
         });
 
@@ -99,14 +99,17 @@ public class MenuConsultasAdicionales extends javax.swing.JFrame {
                         .addComponent(lblTitulo)
                         .addGap(135, 135, 135))
                     .addGroup(panelMenuLayout.createSequentialGroup()
-                        .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnConsultarPlanDeEstudioCursoParticular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnConsultarClientesOrdenados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnConsultarCorrequisitoCurso)
-                            .addComponent(btnConsultarInformacionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(panelMenuLayout.createSequentialGroup()
+                                .addComponent(btnConsultarClientesOrdenados, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnConsultarCuentasOrdenadas)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnConsultarInformacionCuentaParticular)
+                            .addComponent(btnConsultarInformacionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnConsultarListaDeCursos)
@@ -125,8 +128,8 @@ public class MenuConsultasAdicionales extends javax.swing.JFrame {
                     .addComponent(btnConsultarInformacionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnConsultarCorrequisitoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConsultarPlanDeEstudioCursoParticular, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnConsultarInformacionCuentaParticular, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultarCuentasOrdenadas, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addComponent(btnConsultarListaDeCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
@@ -154,17 +157,17 @@ public class MenuConsultasAdicionales extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnConsultarClientesOrdenadosActionPerformed
 
-    private void btnConsultarPlanDeEstudioCursoParticularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPlanDeEstudioCursoParticularActionPerformed
+    private void btnConsultarCuentasOrdenadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarCuentasOrdenadasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnConsultarPlanDeEstudioCursoParticularActionPerformed
+    }//GEN-LAST:event_btnConsultarCuentasOrdenadasActionPerformed
 
     private void btnConsultarInformacionClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarInformacionClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnConsultarInformacionClienteActionPerformed
 
-    private void btnConsultarCorrequisitoCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarCorrequisitoCursoActionPerformed
+    private void btnConsultarInformacionCuentaParticularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarInformacionCuentaParticularActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnConsultarCorrequisitoCursoActionPerformed
+    }//GEN-LAST:event_btnConsultarInformacionCuentaParticularActionPerformed
 
     private void btnConsultarListaDeCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarListaDeCursosActionPerformed
         // TODO add your handling code here:
@@ -208,10 +211,10 @@ public class MenuConsultasAdicionales extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnConsultarClientesOrdenados;
-    public javax.swing.JButton btnConsultarCorrequisitoCurso;
+    public javax.swing.JButton btnConsultarCuentasOrdenadas;
     public javax.swing.JButton btnConsultarInformacionCliente;
+    public javax.swing.JButton btnConsultarInformacionCuentaParticular;
     public javax.swing.JButton btnConsultarListaDeCursos;
-    public javax.swing.JButton btnConsultarPlanDeEstudioCursoParticular;
     public javax.swing.JButton btnVolver;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel panelMenu;

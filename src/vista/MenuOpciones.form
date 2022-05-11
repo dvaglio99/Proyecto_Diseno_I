@@ -50,7 +50,7 @@
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="btnModificacionInformacion" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnRegistrarCliente" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnRegistrarPlanEstudios" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnCambiarPIN" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" pref="95" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -87,7 +87,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnRegistrarPlanEstudios" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="btnCambiarPIN" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
                       <Component id="btnAsignarCursoRequisito" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="30" max="32767" attributes="0"/>
@@ -140,15 +140,15 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="btnRegistrarPlanEstudios">
+        <Component class="javax.swing.JButton" name="btnCambiarPIN">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Microsoft Sans Serif" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Crear un Plan de Estudios"/>
+            <Property name="text" type="java.lang.String" value="Cambiar PIN de una cuenta"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarPlanEstudiosActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCambiarPINActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

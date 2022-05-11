@@ -5,11 +5,13 @@
  */
 package conexion;
 
+import controlador.ControladorMenuOpciones;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import vista.MenuOpciones;
 /**
  *
  * @author chava
@@ -47,5 +49,10 @@ public class Conexion {
     } catch(SQLException ex){
       System.out.println(ex.getErrorCode());
     }
-  }    
+  } 
+    public static void main(String[] args) {
+      MenuOpciones inicio = new MenuOpciones();
+      ControladorMenuOpciones controlador = new ControladorMenuOpciones(inicio);
+      controlador.vista.setVisible(true);
+    }
 }

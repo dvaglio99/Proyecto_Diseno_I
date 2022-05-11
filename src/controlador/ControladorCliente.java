@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import logicadenegocios.Cliente;
 import validaciones.Validaciones;
 import vista.ConsultarClientesOrdenados;
+import vista.ConsultarCuentasOrdenadas;
 import vista.ConsultarInformacionClienteCuentas;
 import vista.RegistrarCliente;
 
@@ -24,8 +25,8 @@ public class ControladorCliente implements ActionListener {
   Conexion conexion;
   public ResultSet rs;
   public JTable tabla;
-  public RegistrarCliente vistaRegistrarCliente;
-  public ConsultarClientesOrdenados vistaConsultarClientesOrdenados;
+  public RegistrarCliente vistaRegistrarCliente = new RegistrarCliente();
+  public ConsultarClientesOrdenados vistaConsultarClientesOrdenados = new ConsultarClientesOrdenados();
   public ConsultarInformacionClienteCuentas vistaConsultarInformacionClienteCuentas = 
           new ConsultarInformacionClienteCuentas();
   public Cliente cliente;
@@ -52,7 +53,8 @@ public class ControladorCliente implements ActionListener {
     vistaConsultarInformacionClienteCuentas = pVistaConsultarInformacionClienteCuentas;
     clienteDao = pModelo;
 
-    //this.vistaConsultarInformacionClienteCuentas.btnVolver.addActionListener(this);
+    this.vistaConsultarInformacionClienteCuentas.btnBuscar.addActionListener(this);
+    this.vistaConsultarInformacionClienteCuentas.btnVolver.addActionListener(this);
   }
   
   @Override
@@ -72,9 +74,9 @@ public class ControladorCliente implements ActionListener {
     if (e.getSource() == vistaConsultarClientesOrdenados.btnVolver){
       this.vistaConsultarClientesOrdenados.setVisible(false);
     }
-    /*if (e.getSource() == vistaConsultarInformacionClienteCuentas.btnVolver){
+    if (e.getSource() == vistaConsultarInformacionClienteCuentas.btnVolver){
       this.vistaConsultarInformacionClienteCuentas.setVisible(false);
-    }*/
+    }
   }
   	
   public void registrarCliente() {
@@ -118,7 +120,7 @@ public class ControladorCliente implements ActionListener {
     tabla = vistaConsultarInformacionClienteCuentas.tablaInformeClienteParticular;
     tabla.setModel(dfm);
     dfm.setColumnIdentifiers(new Object[]{"ID Cliente","Cedula", "Primer Apellido", "Segundo Apellido",
-        "Fecha Nacimiento", "Numero Telefonico", "Correo Electronico", "Numero de cuenta",
+        "Nombre","Fecha Nacimiento", "Numero Telefonico", "Correo Electronico", "Numero de cuenta",
         "Estado de la cuenta"});
     try {
       while (rs.next()) {

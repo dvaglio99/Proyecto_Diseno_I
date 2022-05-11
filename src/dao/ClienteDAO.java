@@ -21,14 +21,14 @@ import javax.swing.DefaultComboBoxModel;
 public class ClienteDAO {
 	Conexion conexion;
 	
-	public ClienteDAO() {
-	    conexion = new Conexion();
-	  }
+  public ClienteDAO() {
+    conexion = new Conexion();
+  }
 
-    public DefaultComboBoxModel llenarComboBox() {
+  public DefaultComboBoxModel llenarComboBox() {
     DefaultComboBoxModel modelo = new DefaultComboBoxModel();
     try {
-      CallableStatement cmd = conexion.Conexion().prepareCall("{CALL [dbo].[[Combo_IdentificacionClientes]]}");
+      CallableStatement cmd = conexion.Conexion().prepareCall("{CALL [dbo].[Combo_IdentificacionClientes]}");
       ResultSet resultado = cmd.executeQuery();    
       while (resultado.next()) {
         modelo.addElement(resultado.getString(1));
@@ -37,58 +37,41 @@ public class ClienteDAO {
     }
       return modelo;
   }
-	 public void registrarCliente(String primerApellido, String segundoApellido, String nombre,
-			 String identificacion, String fechaNacimiento, String numeroTelefonico,String correoElectronico) throws IOException {
-		 	PreparedStatement ps;
-	    	Connection conect = conexion.Conexion();    
-
-		 	//String resultado = "insert into Cliente values (?,?,?,?,?,?,?)";
-		   
-		    	try {
-		    		CallableStatement cstmt2 = conect.prepareCall("{call dbo.registrarPersona(?,?,?,?,?,?,?)}");
-			         cstmt2.setString(1, primerApellido);
-			         cstmt2.setString(2, segundoApellido);
-			         cstmt2.setString(3, nombre);
-			         cstmt2.setString(4, identificacion);
-			         cstmt2.setString(5, fechaNacimiento);
-			         cstmt2.setString(6, numeroTelefonico);
-			         cstmt2.setString(7, correoElectronico);
-			         cstmt2.executeUpdate();
-		    	// Connection conect = conexion.Conexion();    
-		         CallableStatement cstmt = conect.prepareCall("{call dbo.registrarCliente(?,?,?,?,?,?,?)}");
-		         cstmt.setString(1, primerApellido);
-		         cstmt.setString(2, segundoApellido);
-		         cstmt.setString(3, nombre);
-		         cstmt.setString(4, identificacion);
-		         cstmt.setString(5, fechaNacimiento);
-		         cstmt.setString(6, numeroTelefonico);
-		         cstmt.setString(7, correoElectronico);
-		         cstmt.executeUpdate();
-		         
-		         //int respuesta = cstmt.executeUpdate();
-		    	 /*ps = conect.prepareStatement(resultado);
-		            ps.setString(1,primerApellido);
-		            ps.setString(2,segundoApellido);
-		            ps.setString(3,nombre);
-		            ps.setString(4,identificacion);
-		            ps.setString(5,fechaNacimiento);
-		            ps.setString(6,numeroTelefonico);
-		            ps.setString(7,correoElectronico);
-		            ps.executeUpdate();
-		            ps.close();*/
-		         
-		    	} catch (SQLException e) {
-		            System.err.println(e);
-		            //return false;
-		        }
-		        finally{
-		            try{
-		                conect.close();
-		            } catch(SQLException e){
-		                System.err.println(e);
-		            }
-		        }
-		  }
+  
+  public void registrarCliente(String primerApellido, String segundoApellido, String nombre,
+          String identificacion, String fechaNacimiento, String numeroTelefonico,String correoElectronico) throws IOException {
+    PreparedStatement ps;
+    Connection conect = conexion.Conexion();    		   
+    try {
+      CallableStatement cstmt2 = conect.prepareCall("{call dbo.registrarPersona(?,?,?,?,?,?,?)}");
+      cstmt2.setString(1, primerApellido);
+      cstmt2.setString(2, segundoApellido);
+      cstmt2.setString(3, nombre);
+      cstmt2.setString(4, identificacion);
+      cstmt2.setString(5, fechaNacimiento);
+      cstmt2.setString(6, numeroTelefonico);
+      cstmt2.setString(7, correoElectronico);
+      cstmt2.executeUpdate();
+      CallableStatement cstmt = conect.prepareCall("{call dbo.registrarCliente(?,?,?,?,?,?,?)}");
+      cstmt.setString(1, primerApellido);
+      cstmt.setString(2, segundoApellido);
+      cstmt.setString(3, nombre);
+      cstmt.setString(4, identificacion);
+      cstmt.setString(5, fechaNacimiento);
+      cstmt.setString(6, numeroTelefonico);
+      cstmt.setString(7, correoElectronico);
+      cstmt.executeUpdate();		         
+    } catch (SQLException e) {
+      System.err.println(e);
+    }
+    finally{
+      try{
+        conect.close();
+      } catch(SQLException e){
+	System.err.println(e);
+      }
+    }  
+  }
   public ResultSet consultarClientesOrdenados() {
     Statement ejecutor;
     ResultSet rs = null;

@@ -56,16 +56,21 @@
                           <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="btnConsultarPlanDeEstudioCursoParticular" max="32767" attributes="0"/>
-                              <Component id="btnConsultarClientesOrdenados" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnConsultarCorrequisitoCurso" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="btnConsultarClientesOrdenados" min="-2" pref="387" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="btnConsultarCuentasOrdenadas" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="btnConsultarInformacionCuentaParticular" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="btnConsultarInformacionCliente" alignment="0" min="-2" pref="402" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -90,8 +95,8 @@
                   </Group>
                   <EmptySpace pref="63" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnConsultarCorrequisitoCurso" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
-                      <Component id="btnConsultarPlanDeEstudioCursoParticular" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
+                      <Component id="btnConsultarInformacionCuentaParticular" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
+                      <Component id="btnConsultarCuentasOrdenadas" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Component id="btnConsultarListaDeCursos" min="-2" pref="58" max="-2" attributes="0"/>
@@ -131,7 +136,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Microsoft Sans Serif" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Consultar clientes ordenados"/>
+            <Property name="text" type="java.lang.String" value="Consultar clientes ordenados ascedentenmente"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarClientesOrdenadosActionPerformed"/>
@@ -140,15 +145,15 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="btnConsultarPlanDeEstudioCursoParticular">
+        <Component class="javax.swing.JButton" name="btnConsultarCuentasOrdenadas">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Microsoft Sans Serif" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Consultar planes de estudio de un curso "/>
+            <Property name="text" type="java.lang.String" value="Consultar cuentas ordenados descendentemente"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarPlanDeEstudioCursoParticularActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarCuentasOrdenadasActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -168,15 +173,15 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="btnConsultarCorrequisitoCurso">
+        <Component class="javax.swing.JButton" name="btnConsultarInformacionCuentaParticular">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Microsoft Sans Serif" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Consultar correquisitos de un curso"/>
+            <Property name="text" type="java.lang.String" value="Consultar Informacion de una cuenta en particular"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarCorrequisitoCursoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarInformacionCuentaParticularActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
