@@ -22,7 +22,7 @@ public class Cuenta {
   private Cliente duenio;
   private ArrayList<Operacion> operaciones;
   
-  
+ 
   public Cuenta(int pNumeroCuenta, String pPIN, String pFechaCreacion, double pSaldo, String pEstado, Cliente pDuenio) {
     setNumeroCuenta(pNumeroCuenta);
     setPIN(pPIN);
@@ -31,6 +31,11 @@ public class Cuenta {
     setEstado(pEstado);
     setCliente(pDuenio);
     operaciones = new ArrayList<Operacion>();
+  }
+  
+   
+  public Cuenta() {
+        
   }
   
   public String calcularTotalComisionDepositoRetiro() {

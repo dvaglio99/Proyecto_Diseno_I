@@ -143,4 +143,6 @@ public class ControladorCliente implements ActionListener {
     vistaRegistrarCliente.txtNumeroTelefonico.setText("");
     vistaRegistrarCliente.txtCorreoElectronico.setText("");
   }
+  
+  
 }

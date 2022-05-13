@@ -6,19 +6,25 @@
 package controlador;
 
 import conexion.Conexion;
+import dao.ClienteDAO;
 import dao.CuentaDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import logicadenegocios.Cliente;
 import logicadenegocios.Cuenta;
+import validaciones.Validaciones;
 import vista.CambiarPIN;
 import vista.ConsultarCuentasOrdenadas;
 import vista.ConsultarInformacionCuentas;
+import vista.RegistrarCuenta;
 
 /**
  *
@@ -32,6 +38,7 @@ public class ControladorCuenta implements ActionListener {
   public ConsultarCuentasOrdenadas vistaConsultarCuentasOrdenadas = new ConsultarCuentasOrdenadas();
   public ConsultarInformacionCuentas vistaConsultarInformacionCuentas = 
     new ConsultarInformacionCuentas();
+  public RegistrarCuenta vistaRegistrarCuenta = new RegistrarCuenta();
   public CambiarPIN vistaCambiarPIN = new CambiarPIN();
   public Cuenta cuenta;
   public CuentaDAO cuentaDao;
@@ -63,6 +70,17 @@ public class ControladorCuenta implements ActionListener {
     this.vistaCambiarPIN.txtPINNoModificable.setEditable(false);
   }
   
+  public ControladorCuenta(RegistrarCuenta pVistaRegistroCuenta, Cuenta pCuenta) {
+      
+    vistaRegistrarCuenta = pVistaRegistroCuenta;
+    cuenta = pCuenta;
+    cuentaDao = new CuentaDAO();
+	        
+    this.vistaRegistrarCuenta.btnRegistrarCuenta.addActionListener(this);
+    this.vistaRegistrarCuenta.btnVolver.addActionListener(this);
+    this.vistaRegistrarCuenta.btnLimpiarCampos.addActionListener(this);
+   
+  }
   @Override
   public void actionPerformed(ActionEvent e) {
     if (e.getSource() == vistaConsultarInformacionCuentas.btnBuscar){
@@ -82,6 +100,11 @@ public class ControladorCuenta implements ActionListener {
     }
     if (e.getSource() == vistaCambiarPIN.btnVolver) {
         this.vistaCambiarPIN.setVisible(false);
+    }
+    
+    if (e.getSource() == vistaRegistrarCuenta.btnRegistrarCuenta) {
+        
+        registrarCuenta();
     }
     
   }
@@ -140,4 +163,46 @@ public class ControladorCuenta implements ActionListener {
       }
 
   }
+  
+  public void registrarCuenta() {
+      
+    String pPIN = vistaRegistrarCuenta.txtPIN.getText().toString();
+    int pIDCliente = Integer.parseInt(vistaRegistrarCuenta.cbxCliente.getSelectedItem().toString());
+    String pFechaCreacion = vistaRegistrarCuenta.txtFechaCreacion.getText().toString();
+    int pSaldo = Integer.parseInt(vistaRegistrarCuenta.txtSaldoCuenta.getText().toString());  
+    String pEstado = vistaRegistrarCuenta.cbxEstadoCuenta.getSelectedItem().toString();
+    
+    if (validaciones.Validaciones.validarPIN(pPIN) && 
+            validaciones.Validaciones.obtenerFechaFormateada(pFechaCreacion) == true) {
+        
+        try {
+            
+            cuentaDao.registrarCuentaAUnCliente(pPIN, pIDCliente, pFechaCreacion, pSaldo, pEstado);
+            JOptionPane.showMessageDialog(vistaCambiarPIN, "Ha sido posible registar la cuenta"
+            + "para el Cliente con el ID: " + pIDCliente);
+            
+        } catch (Exception e) {
+        }       
+        
+    } else {
+      JOptionPane.showMessageDialog(vistaRegistrarCuenta, "ERROR: fallo en el ingreso de datos.  "
+            + " No ha sido posible registrar la cuenta al Cliente con el ID  " + 
+              pIDCliente+ ". Por favor intente de nuevo."); 
+          
+    }
+    
+    
+  }
+  
+  public void limpiarCampos() {
+    vistaRegistrarCuenta.txtFechaCreacion.setText("");
+    vistaRegistrarCuenta.txtPIN.setText("");
+    vistaRegistrarCuenta.txtSaldoCuenta.setText("");
+    
+  }
+  
+     
+  
+  
+  
 }
